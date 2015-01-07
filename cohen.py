@@ -14,7 +14,8 @@ def kappa(data):
     𝜅 = -------------
           1 - Pr(e)
     
-    Where Pr(a) is observed agreement and Pr(e) is expected agreement."""
+    Where Pr(a) is the percentage of observed agreement and Pr(e) is percentage 
+    of expected agreement."""
     if len(data.shape) != 2:
         raise ValueError, 'input must be 2-dimensional array'
     if len(set(data.shape)) > 1:
@@ -30,10 +31,10 @@ def kappa(data):
         raise ValueError, 'total data must sum to positive value'
     observation = observed(data)
     expectation = expected(data)
-    perfect_agreement = 1.0
+    perfection = 1.0
     k = np.divide(
         observation - expectation,
-        perfect_agreement - expectation
+        perfection - expectation
     )
     return k
 
@@ -41,16 +42,16 @@ def observed(data):
     """Computes the observed agreement, Pr(a), between annotators."""
     total = float(np.sum(data))
     agreed = np.sum(data.diagonal())
-    pr_a = agreed / total
-    return pr_a
+    percent_agreement = agreed / total
+    return percent_agreement
 
 def expected(data):
     """Computes the expected agreement, Pr(e), between annotators."""
     total = float(np.sum(data))
     annotators = range(len(data.shape))
     percentages = ((data.sum(axis=i) / total) for i in annotators) 
-    pr_e = np.dot(*percentages)
-    return pr_e
+    percent_expected = np.dot(*percentages)
+    return percent_expected
 
 if __name__ == '__main__':
     # Example data from Pustejovsky and Stubbs

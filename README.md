@@ -1,6 +1,6 @@
 # Cohen's kappa
 ## cohen.py
-Functions for computing Cohen's kappa (𝜅), a measure of inter-annotator  agreement between exactly two annotators.
+Functions for computing Cohen's kappa (𝜅), a measure of inter-annotator agreement between exactly two annotators.
 
 Cohen's kappa is computed as follows:
 
